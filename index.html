@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Summabags — Boutique Fashion Without the Price Tag</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --blush:#F5E8E0;
+  --blushMid:#EED5C8;
+  --rose:#C4706A;
+  --roseDark:#9E4E48;
+  --roseLight:#D4908A;
+  --cream:#FDFAF7;
+  --ivory:#F8F4EF;
+  --warm:#EDE0D6;
+  --sand:#D4BFB0;
+  --text:#2A1C18;
+  --muted:#8A6E65;
+  --border:#E8D8D0;
+  --borderLight:#F0E4DC;
+  --white:#FFFFFF;
+  --gold:#B8905A;
+  --teal:#4A8E8A;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.65;overflow-x:hidden;}
+img{display:block;width:100%;height:100%;object-fit:cover;}
+a{text-decoration:none;color:inherit;}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;}
+
+/* ── ANNOUNCE ── */
+.announce{background:var(--rose);color:#fff;text-align:center;padding:10px 20px;font-size:13px;letter-spacing:.6px;}
+.announce strong{font-weight:700;}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:500;background:rgba(253,250,247,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 52px;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--text);letter-spacing:2px;font-style:italic;}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:500;transition:color .2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--rose);transition:width .2s;}
+.nav-links a:hover{color:var(--rose);}
+.nav-links a:hover::after{width:100%;}
+.nav-right{display:flex;gap:16px;align-items:center;}
+.nav-ico{font-size:17px;cursor:pointer;color:var(--muted);transition:color .2s;}
+.nav-ico:hover{color:var(--rose);}
+.nav-btn{background:var(--rose);color:#fff;border:none;padding:9px 22px;font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:.8px;text-transform:uppercase;cursor:pointer;font-weight:500;border-radius:2px;transition:background .2s;}
+.nav-btn:hover{background:var(--roseDark);}
+
+/* ── HERO ── */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:90vh;}
+.hero-left{background:linear-gradient(160deg,var(--blush) 0%,var(--ivory) 100%);display:flex;flex-direction:column;justify-content:center;padding:80px 64px;position:relative;overflow:hidden;}
+.hero-left::before{content:'Summa';font-family:'Cormorant Garamond',serif;font-size:200px;font-style:italic;color:rgba(196,112,106,.06);position:absolute;bottom:-30px;left:-20px;line-height:1;pointer-events:none;white-space:nowrap;}
+.htag{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--rose);font-weight:500;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.htag::before{content:'';display:inline-block;width:28px;height:1px;background:var(--rose);}
+.hero-left h1{font-size:68px;line-height:1;color:var(--text);margin-bottom:8px;font-weight:600;position:relative;z-index:1;}
+.hero-left h1 em{font-style:italic;color:var(--rose);}
+.hero-left p{font-size:16px;color:var(--muted);line-height:1.8;max-width:380px;margin:22px 0 36px;position:relative;z-index:1;}
+.hero-ctas{display:flex;gap:12px;position:relative;z-index:1;}
+.btn-rose{background:var(--rose);color:#fff;border:none;padding:14px 32px;font-family:'DM Sans',sans-serif;font-size:13px;letter-spacing:.8px;text-transform:uppercase;cursor:pointer;font-weight:500;border-radius:2px;transition:background .2s;}
+.btn-rose:hover{background:var(--roseDark);}
+.btn-outline{background:transparent;color:var(--text);border:1.5px solid var(--text);padding:14px 32px;font-family:'DM Sans',sans-serif;font-size:13px;letter-spacing:.8px;text-transform:uppercase;cursor:pointer;font-weight:500;border-radius:2px;transition:all .2s;}
+.btn-outline:hover{background:var(--text);color:#fff;}
+.hero-stats{display:flex;gap:32px;margin-top:48px;padding-top:32px;border-top:1px solid var(--border);position:relative;z-index:1;}
+.hstat .num{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--rose);}
+.hstat .lbl{font-size:11px;color:var(--muted);margin-top:2px;letter-spacing:.3px;}
+.hero-right{position:relative;overflow:hidden;}
+.hero-right img{width:100%;height:100%;filter:brightness(.92);}
+.hero-badge{position:absolute;bottom:32px;right:32px;background:rgba(253,250,247,.95);backdrop-filter:blur(10px);padding:16px 20px;border-left:3px solid var(--rose);}
+.hero-badge .hbt{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--rose);font-weight:600;margin-bottom:5px;}
+.hero-badge strong{display:block;font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--text);}
+.hero-badge span{font-size:13px;color:var(--muted);}
+
+/* ── TRUST ── */
+.trust{background:var(--rose);display:flex;justify-content:center;gap:48px;padding:16px 48px;flex-wrap:wrap;}
+.ti{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.92);font-size:13px;}
+.ti b{color:#fff;}
+
+/* ── SECTIONS ── */
+section{padding:80px 60px;}
+.eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--rose);font-weight:600;margin-bottom:10px;}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:42px;color:var(--text);font-weight:600;line-height:1.1;margin-bottom:10px;}
+.sec-sub{font-size:14px;color:var(--muted);max-width:480px;line-height:1.8;}
+.sec-hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:44px;}
+.vwall{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--rose);font-weight:600;border-bottom:1px solid var(--rose);padding-bottom:1px;}
+
+/* ── CATEGORIES ── */
+.cat-section{background:var(--white);padding:72px 60px;}
+.cat-section .eyebrow,.cat-section .sec-title{text-align:center;}
+.cat-section .sec-title{margin-bottom:48px;}
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;}
+.cat-card{position:relative;overflow:hidden;cursor:pointer;}
+.cat-img{overflow:hidden;}
+.cat-img-tall{aspect-ratio:.75;}
+.cat-img-short{aspect-ratio:.85;}
+.cat-card img{transition:transform .55s ease;filter:brightness(.78);}
+.cat-card:hover img{transform:scale(1.06);filter:brightness(.55);}
+.cat-over{position:absolute;inset:0;background:linear-gradient(to top,rgba(42,28,24,.75) 0%,rgba(42,28,24,.1) 55%,transparent 100%);}
+.cat-lbl{position:absolute;bottom:0;left:0;right:0;padding:22px 18px;}
+.cat-lbl h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#fff;margin-bottom:5px;}
+.cat-lbl a{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.8);border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:1px;}
+.cat-card:hover .cat-lbl a{color:#fff;border-color:#fff;}
+/* Row 2 */
+.cat-grid2{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-top:3px;}
+
+/* ── PRODUCTS ── */
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.prod-card{background:var(--white);border:1px solid var(--borderLight);cursor:pointer;transition:transform .2s;}
+.prod-card:hover{transform:translateY(-3px);}
+.prod-card:hover .prod-img img{transform:scale(1.05);}
+.prod-img{aspect-ratio:.8;overflow:hidden;position:relative;background:var(--blush);}
+.prod-img img{transition:transform .45s;}
+.badge{position:absolute;top:10px;left:10px;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;}
+.b-new{background:var(--rose);color:#fff;}
+.b-sale{background:var(--gold);color:#fff;}
+.b-hot{background:var(--text);color:#fff;}
+.b-low{background:#D05A5A;color:#fff;}
+.b-drop{background:var(--teal);color:#fff;}
+.prod-body{padding:14px 14px 18px;}
+.prod-body h4{font-size:14px;color:var(--text);font-weight:500;margin-bottom:6px;line-height:1.35;}
+.prod-sizes{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:10px;}
+.sz{font-size:9px;border:1px solid var(--border);padding:3px 7px;color:var(--muted);transition:all .2s;cursor:pointer;}
+.sz:hover{border-color:var(--rose);color:var(--rose);}
+.prod-footer{display:flex;justify-content:space-between;align-items:center;}
+.price{font-size:15px;font-weight:600;color:var(--text);}
+.price-old{font-size:12px;color:var(--muted);text-decoration:line-through;font-weight:400;margin-left:6px;}
+.add-btn{background:transparent;border:1px solid var(--border);color:var(--muted);font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:7px 12px;cursor:pointer;font-weight:500;transition:all .2s;}
+.add-btn:hover{background:var(--rose);border-color:var(--rose);color:#fff;}
+
+/* ── BRAND STORY ── */
+.story{display:grid;grid-template-columns:1fr 1fr;min-height:540px;padding:0;}
+.story-img{position:relative;overflow:hidden;}
+.story-img img{filter:brightness(.85);}
+.story-content{background:var(--blush);display:flex;flex-direction:column;justify-content:center;padding:72px 60px;}
+.story-content .sec-title{font-size:46px;}
+.story-content p{font-size:15px;color:var(--muted);line-height:1.9;margin-bottom:14px;}
+.story-vals{display:flex;flex-direction:column;gap:12px;margin:20px 0 32px;}
+.sv{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--text);}
+.sv-dot{width:6px;height:6px;background:var(--rose);border-radius:50%;flex-shrink:0;}
+
+/* ── DROPSHIP SECTION ── */
+.drop-section{background:var(--text);padding:72px 60px;}
+.drop-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.drop-text .eyebrow{color:var(--roseLight);}
+.drop-text .sec-title{color:var(--cream);font-size:46px;}
+.drop-text p{font-size:15px;color:rgba(237,224,214,.7);line-height:1.85;margin-bottom:12px;}
+.drop-text .btn-cream{background:var(--cream);color:var(--text);border:none;padding:14px 32px;font-family:'DM Sans',sans-serif;font-size:13px;letter-spacing:.8px;text-transform:uppercase;cursor:pointer;font-weight:600;border-radius:2px;margin-top:12px;}
+.drop-stats{display:grid;grid-template-columns:1fr 1fr;gap:3px;}
+.dstat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:28px 20px;text-align:center;}
+.dstat .dn{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:600;color:var(--roseLight);}
+.dstat .dl{font-size:11px;color:rgba(237,224,214,.5);letter-spacing:.5px;margin-top:4px;}
+
+/* ── VIBE STRIP ── */
+.vibe-section{background:var(--ivory);}
+.vibe-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:44px;}
+.vibe-card{background:var(--white);border:1px solid var(--borderLight);cursor:pointer;transition:transform .2s;}
+.vibe-card:hover{transform:translateY(-3px);}
+.vibe-card:hover .vibe-img img{transform:scale(1.06);}
+.vibe-img{aspect-ratio:.85;overflow:hidden;background:var(--blush);}
+.vibe-img img{transition:transform .45s;}
+.vibe-body{padding:12px 12px 16px;}
+.vibe-body h5{font-size:13px;color:var(--text);font-weight:500;margin-bottom:4px;line-height:1.3;}
+.vibe-body .vp{font-size:14px;font-weight:600;color:var(--text);margin-bottom:8px;}
+.vibe-add{width:100%;background:var(--blush);color:var(--rose);border:none;font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:9px;cursor:pointer;font-weight:600;transition:all .2s;}
+.vibe-add:hover{background:var(--rose);color:#fff;}
+
+/* ── BAGS FEATURE ── */
+.bags-feature{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;min-height:480px;padding:0;}
+.bags-cell{position:relative;overflow:hidden;cursor:pointer;}
+.bags-cell img{transition:transform .55s;filter:brightness(.7);}
+.bags-cell:hover img{transform:scale(1.06);filter:brightness(.5);}
+.bags-over{position:absolute;inset:0;background:linear-gradient(to top,rgba(42,28,24,.7) 0%,transparent 60%);}
+.bags-lbl{position:absolute;bottom:0;left:0;right:0;padding:24px 20px;}
+.bags-lbl h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:#fff;margin-bottom:8px;}
+.bags-btn{display:inline-block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.6);padding:7px 16px;transition:all .2s;}
+.bags-cell:hover .bags-btn{background:var(--rose);border-color:var(--rose);}
+
+/* ── REVIEWS ── */
+.reviews{background:var(--white);}
+.rev-hdr{text-align:center;margin-bottom:52px;}
+.rev-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:44px;}
+.rstat{background:var(--blush);padding:28px 20px;text-align:center;border-top:2px solid var(--rose);}
+.rstat .rn{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:600;color:var(--rose);}
+.rstat .rl{font-size:11px;color:var(--muted);letter-spacing:.5px;margin-top:4px;}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.rev-card{background:var(--ivory);border:1px solid var(--borderLight);padding:28px;}
+.rev-stars{color:var(--gold);font-size:14px;letter-spacing:2px;margin-bottom:14px;}
+.rev-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--text);line-height:1.7;margin-bottom:18px;}
+.rev-author{display:flex;align-items:center;gap:12px;}
+.rev-av{width:38px;height:38px;background:var(--rose);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#fff;flex-shrink:0;}
+.rev-name{font-size:13px;font-weight:600;color:var(--text);}
+.rev-tag{font-size:11px;color:var(--rose);}
+
+/* ── WHY US ── */
+.why-section{background:var(--blush);padding:72px 60px;}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-top:48px;}
+.why-card{background:var(--white);padding:32px 24px;text-align:center;border-top:2px solid var(--border);transition:border-color .2s;}
+.why-card:hover{border-color:var(--rose);}
+.why-ico{font-size:28px;margin-bottom:14px;}
+.why-card h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--text);margin-bottom:8px;}
+.why-card p{font-size:13px;color:var(--muted);line-height:1.75;}
+
+/* ── SIZE GUIDE ── */
+.size-section{background:var(--ivory);}
+.size-inner{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+.size-text p{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:16px;}
+.size-wrap{background:var(--white);border:1px solid var(--border);padding:28px;}
+table.st{width:100%;border-collapse:collapse;font-size:13px;}
+table.st th{text-align:left;padding:10px 12px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--rose);border-bottom:1px solid var(--border);}
+table.st td{padding:11px 12px;color:var(--text);border-bottom:1px solid var(--borderLight);}
+table.st tr:last-child td{border-bottom:none;}
+table.st tr:nth-child(even) td{background:var(--ivory);}
+
+/* ── INSTA ── */
+.insta-section{background:var(--white);padding-bottom:0;}
+.insta-hdr{text-align:center;margin-bottom:6px;}
+.insta-handle{text-align:center;margin-bottom:32px;}
+.insta-handle a{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--rose);font-style:italic;}
+.insta-handle p{font-size:13px;color:var(--muted);margin-top:4px;}
+.insta-grid{display:grid;grid-template-columns:repeat(6,1fr);}
+.icell{aspect-ratio:1;overflow:hidden;cursor:pointer;position:relative;}
+.icell img{transition:transform .4s;filter:brightness(.85);}
+.icell:hover img{transform:scale(1.1);filter:brightness(.55);}
+.icell-over{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:20px;opacity:0;transition:opacity .3s;color:#fff;}
+.icell:hover .icell-over{opacity:1;}
+
+/* ── EMAIL ── */
+.email-section{background:var(--rose);padding:80px 60px;text-align:center;position:relative;overflow:hidden;}
+.email-section::before{content:'Summabags';font-family:'Cormorant Garamond',serif;font-size:220px;font-style:italic;color:rgba(255,255,255,.06);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;}
+.email-inner{max-width:520px;margin:0 auto;position:relative;z-index:1;}
+.email-inner .eyebrow{color:rgba(255,255,255,.7);}
+.email-inner .sec-title{color:#fff;font-size:46px;text-align:center;margin:0 auto 12px;}
+.email-inner p{font-size:15px;color:rgba(255,255,255,.8);margin-bottom:36px;}
+.email-form{display:flex;border:1px solid rgba(255,255,255,.4);}
+.email-input{flex:1;background:rgba(255,255,255,.12);border:none;padding:15px 20px;font-size:14px;color:#fff;font-family:'DM Sans',sans-serif;outline:none;}
+.email-input::placeholder{color:rgba(255,255,255,.5);}
+.email-submit{background:#fff;color:var(--rose);border:none;padding:15px 28px;font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;font-weight:700;white-space:nowrap;}
+.email-perks{display:flex;justify-content:center;gap:24px;margin-top:16px;flex-wrap:wrap;}
+.eperk{font-size:11px;color:rgba(255,255,255,.55);}
+
+/* ── FOOTER ── */
+footer{background:var(--text);color:rgba(237,224,214,.8);padding:64px 60px 28px;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--cream);font-style:italic;display:block;margin-bottom:12px;}
+.footer-brand p{font-size:13px;color:rgba(237,224,214,.5);line-height:1.85;max-width:220px;margin-bottom:16px;}
+.footer-social{display:flex;gap:8px;}
+.fsoc{width:34px;height:34px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:12px;cursor:pointer;color:rgba(237,224,214,.5);transition:all .2s;}
+.fsoc:hover{background:var(--rose);border-color:var(--rose);color:#fff;}
+.footer-col h4{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--roseLight);font-weight:600;margin-bottom:18px;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.footer-col a{font-size:13px;color:rgba(237,224,214,.5);transition:color .2s;}
+.footer-col a:hover{color:var(--roseLight);}
+.pay-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:16px;}
+.pay{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:4px 10px;font-size:10px;color:rgba(237,224,214,.4);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;font-size:12px;color:rgba(237,224,214,.3);}
+.chat{position:fixed;bottom:28px;right:28px;background:var(--rose);color:#fff;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;z-index:999;box-shadow:0 4px 20px rgba(196,112,106,.4);transition:transform .2s;}
+.chat:hover{transform:scale(1.1);}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCE -->
+<div class="announce">Free shipping on orders $50+ &nbsp;·&nbsp; <strong>Use SUMMA15 for 15% off your first order</strong> &nbsp;·&nbsp; 500+ styles now available</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Summabags</div>
+  <ul class="nav-links">
+    <li><a href="#">New Arrivals</a></li>
+    <li><a href="#">Dresses</a></li>
+    <li><a href="#">Tops</a></li>
+    <li><a href="#">Bottoms</a></li>
+    <li><a href="#">Bags</a></li>
+    <li><a href="#">Accessories</a></li>
+    <li><a href="#">Sale</a></li>
+  </ul>
+  <div class="nav-right">
+    <span class="nav-ico">🔍</span>
+    <span class="nav-ico">♡</span>
+    <button class="nav-btn">Bag (0)</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding:0">
+  <div class="hero-left">
+    <p class="htag">Boutique fashion · Without the price tag</p>
+    <h1>Style made<br/>for the <em>wild</em><br/>at heart.</h1>
+    <p>Hand-curated boutique pieces that celebrate your individuality — iconic styles at prices that never hold you back.</p>
+    <div class="hero-ctas">
+      <button class="btn-rose">Shop New Arrivals</button>
+      <button class="btn-outline">Explore Collections</button>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="num">500+</div><div class="lbl">Curated styles</div></div>
+      <div class="hstat"><div class="num">4.9★</div><div class="lbl">Avg. rating</div></div>
+      <div class="hstat"><div class="num">$10–$95</div><div class="lbl">Price range</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://picsum.photos/seed/summa-hero/900/1000" alt="Hero"/>
+    <div class="hero-badge">
+      <div class="hbt">🌸 New In</div>
+      <strong>All the Looks in Leather Dress</strong>
+      <span>$30.00 — Just dropped</span>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="ti">🚚 <b>Free Shipping</b> on $50+</div>
+  <div class="ti">↩️ <b>Easy</b> Returns</div>
+  <div class="ti">💎 <b>Boutique Quality</b> Prices</div>
+  <div class="ti">🔒 <b>Secure</b> Checkout</div>
+  <div class="ti">💳 <b>Buy Now,</b> Pay Later</div>
+</div>
+
+<!-- SHOP BY CATEGORY Row 1 -->
+<section class="cat-section">
+  <p class="eyebrow">Browse by style</p>
+  <h2 class="sec-title">Find Your Look</h2>
+  <div class="cat-grid">
+    <div class="cat-card">
+      <div class="cat-img cat-img-tall"><img src="https://picsum.photos/seed/summa-dress/500/667" alt="Dresses"/></div>
+      <div class="cat-over"></div>
+      <div class="cat-lbl"><h3>Dresses</h3><a href="#">Shop →</a></div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-img cat-img-tall"><img src="https://picsum.photos/seed/summa-tops/500/667" alt="Tops"/></div>
+      <div class="cat-over"></div>
+      <div class="cat-lbl"><h3>Tops & Blouses</h3><a href="#">Shop →</a></div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-img cat-img-tall"><img src="https://picsum.photos/seed/summa-sweaters/500/667" alt="Sweaters"/></div>
+      <div class="cat-over"></div>
+      <div class="cat-lbl"><h3>Sweaters & Cardigans</h3><a href="#">Shop →</a></div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-img cat-img-tall"><img src="https://picsum.photos/seed/summa-bottoms/500/667" alt="Bottoms"/></div>
+      <div class="cat-over"></div>
+      <div class="cat-lbl"><h3>Bottoms</h3><a href="#">Shop →</a></div>
+    </div>
+  </div>
+  <!-- Row 2 -->
+  <div class="cat-grid2">
+    <div class="cat-card">
+      <div class="cat-img cat-img-short"><img src="https://picsum.photos/seed/summa-bags/500/425" alt="Bags"/></div>
+      <div class="cat-over"></div>
+      <div class="cat-lbl"><h3>Bags & Handbags</h3><a href="#">Shop →</a></div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-img cat-img-short"><img src="https://picsum.photos/seed/summa-access/500/425" alt="Accessories"/></div>
+      <div class="cat-over"></div>
+      <div class="cat-lbl"><h3>Accessories</h3><a href="#">Shop →</a></div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-img cat-img-short"><img src="https://picsum.photos/seed/summa-sets/500/425" alt="Sets"/></div>
+      <div class="cat-over"></div>
+      <div class="cat-lbl"><h3>Sets & Co-Ords</h3><a href="#">Shop →</a></div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-img cat-img-short"><img src="https://picsum.photos/seed/summa-boho/500/425" alt="Boho"/></div>
+      <div class="cat-over"></div>
+      <div class="cat-lbl"><h3>Boho & Festival</h3><a href="#">Shop →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- NEW ARRIVALS — Own Products -->
+<section style="background:var(--cream);padding:80px 60px;">
+  <div class="sec-hdr">
+    <div><p class="eyebrow">Hand-picked for you</p><h2 class="sec-title">New Arrivals</h2></div>
+    <a class="vwall" href="#">View All</a>
+  </div>
+  <div class="product-grid">
+    <div class="prod-card">
+      <div class="prod-img"><img src="https://picsum.photos/seed/sp1/500/625" alt="Leather Dress"/><span class="badge b-new">New</span></div>
+      <div class="prod-body"><h4>Women's Faux Leather Sleeveless Mini Dress</h4><div class="prod-sizes"><span class="sz">XS</span><span class="sz">S</span><span class="sz">M</span><span class="sz">L</span></div><div class="prod-footer"><span class="price">$30.00</span><button class="add-btn">Add</button></div></div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img"><img src="https://picsum.photos/seed/sp2/500/625" alt="Rhinestone Jeans"/><span class="badge b-hot">Best Loved</span></div>
+      <div class="prod-body"><h4>Be a Cowgirl Rhinestone Embellished Jeans</h4><div class="prod-sizes"><span class="sz">S</span><span class="sz">M</span><span class="sz">L</span><span class="sz">XL</span></div><div class="prod-footer"><span class="price">$40.00</span><button class="add-btn">Add</button></div></div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img"><img src="https://picsum.photos/seed/sp3/500/625" alt="Blue Ice Dress"/><span class="badge b-sale">Sale</span></div>
+      <div class="prod-body"><h4>Blue as Ice Women's Evening Slip Dress</h4><div class="prod-sizes"><span class="sz">XS</span><span class="sz">S</span><span class="sz">M</span></div><div class="prod-footer"><span class="price">$38.00 <span class="price-old">$68.00</span></span><button class="add-btn">Add</button></div></div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img"><img src="https://picsum.photos/seed/sp4/500/625" alt="Boho Bag"/><span class="badge b-new">New</span></div>
+      <div class="prod-body"><h4>A Little Boho Woven Shoulder Bag</h4><div class="prod-sizes"></div><div class="prod-footer"><span class="price">$32.00</span><button class="add-btn">Add</button></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND STORY -->
+<section class="story" style="padding:0">
+  <div class="story-img"><img src="https://picsum.photos/seed/summa-story/800/540" alt="Our Story"/></div>
+  <div class="story-content">
+    <p class="eyebrow">Who we are</p>
+    <h2 class="sec-title">Boutique style. Real prices. Real you.</h2>
+    <p>Summabags was built on a simple belief — that everyone deserves to dress beautifully without breaking the bank. We handpick every piece with purpose: quality fabrics, flattering cuts, and styles that make you feel like yourself.</p>
+    <p>Founded by Angee with love for fashion and a commitment to keeping it accessible for everyone.</p>
+    <div class="story-vals">
+      <div class="sv"><span class="sv-dot"></span>Curated by a real woman who loves fashion</div>
+      <div class="sv"><span class="sv-dot"></span>Quality pieces at boutique-without-the-markup prices</div>
+      <div class="sv"><span class="sv-dot"></span>Style for the wild at heart — every size, every vibe</div>
+    </div>
+    <button class="btn-rose">Read Our Full Story</button>
+  </div>
+</section>
+
+<!-- DROPSHIP EXPANSION SECTION -->
+<section class="drop-section">
+  <div class="drop-inner">
+    <div class="drop-text">
+      <p class="eyebrow">500+ styles now available</p>
+      <h2 class="sec-title">Your full wardrobe. One boutique.</h2>
+      <p>Summabags' own handpicked pieces are the heart of this store. Now expanded with hundreds of curated dropship styles across every category — dresses, bags, accessories, outerwear and more.</p>
+      <p>Every style is hand-selected to match the Summabags aesthetic. One checkout. One brand you trust.</p>
+      <button class="btn-cream">Browse All 500+ Styles →</button>
+    </div>
+    <div class="drop-stats">
+      <div class="dstat"><div class="dn">500+</div><div class="dl">Total styles</div></div>
+      <div class="dstat"><div class="dn">13+</div><div class="dl">Categories</div></div>
+      <div class="dstat"><div class="dn">$10</div><div class="dl">Starting from</div></div>
+      <div class="dstat"><div class="dn">Free</div><div class="dl">Shipping over $50</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DROPSHIP PRODUCTS — Dresses -->
+<section style="background:var(--white);padding:80px 60px;">
+  <div class="sec-hdr">
+    <div><p class="eyebrow">Expanded collection</p><h2 class="sec-title">Women's Dresses</h2></div>
+    <a class="vwall" href="#">View All Dresses</a>
+  </div>
+  <div class="product-grid">
+    <div class="prod-card">
+      <div class="prod-img"><img src="https://picsum.photos/seed/sd1/500/625" alt="Midi Dress"/><span class="badge b-drop">New In</span></div>
+      <div class="prod-body"><h4>Women's Floral Wrap Midi Dress — Boho Style</h4><div class="prod-sizes"><span class="sz">XS</span><span class="sz">S</span><span class="sz">M</span><span class="sz">L</span><span class="sz">XL</span></div><div class="prod-footer"><span class="price">$42.00</span><button class="add-btn">Add</button></div></div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img"><img src="https://picsum.photos/seed/sd2/500/625" alt="Satin Slip"/><span class="badge b-drop">New In</span></div>
+      <div class="prod-body"><h4>Women's Satin Slip Midi Dress — Evening Wear</h4><div class="prod-sizes"><span class="sz">S</span><span class="sz">M</span><span class="sz">L</span></div><div class="prod-footer"><span class="price">$55.00</span><button class="add-btn">Add</button></div></div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img"><img src="https://picsum.photos/seed/sd3/500/625" alt="Mini Dress"/><span class="badge b-low">Low Stock</span></div>
+      <div class="prod-body"><h4>Women's Knit Bodycon Mini Dress — Going Out</h4><div class="prod-sizes"><span class="sz">S</span><span class="sz">M</span><span class="sz">L</span></div><div class="prod-footer"><span class="price">$38.00</span><button class="add-btn">Add</button></div></div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img"><img src="https://picsum.photos/seed/sd4/500/625" alt="Smock Dress"/><span class="badge b-drop">New In</span></div>
+      <div class="prod-body"><h4>Women's Smocked Tiered Maxi Dress — Summer</h4><div class="prod-sizes"><span class="sz">XS</span><span class="sz">S</span><span class="sz">M</span><span class="sz">L</span></div><div class="prod-footer"><span class="price">$48.00</span><button class="add-btn">Add</button></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BAGS FEATURE -->
+<div class="bags-feature">
+  <div class="bags-cell">
+    <img src="https://picsum.photos/seed/summa-bag1/500/480" alt="Shoulder Bags"/>
+    <div class="bags-over"></div>
+    <div class="bags-lbl"><h3>Shoulder Bags</h3><a class="bags-btn" href="#">Shop Now</a></div>
+  </div>
+  <div class="bags-cell">
+    <img src="https://picsum.photos/seed/summa-bag2/500/480" alt="Crossbody Bags"/>
+    <div class="bags-over"></div>
+    <div class="bags-lbl"><h3>Crossbody Bags</h3><a class="bags-btn" href="#">Shop Now</a></div>
+  </div>
+  <div class="bags-cell">
+    <img src="https://picsum.photos/seed/summa-bag3/500/480" alt="Tote Bags"/>
+    <div class="bags-over"></div>
+    <div class="bags-lbl"><h3>Tote Bags</h3><a class="bags-btn" href="#">Shop Now</a></div>
+  </div>
+</div>
+
+<!-- ACCESSORIES & VIBE STRIP -->
+<section class="vibe-section">
+  <div class="sec-hdr">
+    <div><p class="eyebrow">Complete the look</p><h2 class="sec-title">Accessories & Extras</h2></div>
+    <a class="vwall" href="#">View All</a>
+  </div>
+  <div class="vibe-grid">
+    <div class="vibe-card"><div class="vibe-img"><img src="https://picsum.photos/seed/sv1/400/480" alt="Jewellery"/></div><div class="vibe-body"><h5>Gold Layered Chain Necklace Set</h5><div class="vp">$18.00</div><button class="vibe-add">Add to Bag</button></div></div>
+    <div class="vibe-card"><div class="vibe-img"><img src="https://picsum.photos/seed/sv2/400/480" alt="Scarf"/></div><div class="vibe-body"><h5>Boho Fringe Wrap Scarf</h5><div class="vp">$22.00</div><button class="vibe-add">Add to Bag</button></div></div>
+    <div class="vibe-card"><div class="vibe-img"><img src="https://picsum.photos/seed/sv3/400/480" alt="Belt"/></div><div class="vibe-body"><h5>Wide Fashion Belt — Faux Leather</h5><div class="vp">$15.00</div><button class="vibe-add">Add to Bag</button></div></div>
+    <div class="vibe-card"><div class="vibe-img"><img src="https://picsum.photos/seed/sv4/400/480" alt="Sunglasses"/></div><div class="vibe-body"><h5>Oversized Square Sunglasses</h5><div class="vp">$12.00</div><button class="vibe-add">Add to Bag</button></div></div>
+    <div class="vibe-card"><div class="vibe-img"><img src="https://picsum.photos/seed/sv5/400/480" alt="Hair Accessories"/></div><div class="vibe-body"><h5>Satin Hair Scrunchie Set</h5><div class="vp">$10.00</div><button class="vibe-add">Add to Bag</button></div></div>
+  </div>
+</section>
+
+<!-- OUTERWEAR & SETS -->
+<section style="background:var(--cream);padding:80px 60px;">
+  <div class="sec-hdr">
+    <div><p class="eyebrow">Layer up</p><h2 class="sec-title">Outerwear & Sets</h2></div>
+    <a class="vwall" href="#">View All</a>
+  </div>
+  <div class="product-grid">
+    <div class="prod-card">
+      <div class="prod-img"><img src="https://picsum.photos/seed/so1/500/625" alt="Sherpa Vest"/><span class="badge b-hot">Fan Fave</span></div>
+      <div class="prod-body"><h4>Black Sherpa Zip-Up Vest — Cosy Essential</h4><div class="prod-sizes"><span class="sz">XS</span><span class="sz">S</span><span class="sz">M</span><span class="sz">L</span></div><div class="prod-footer"><span class="price">$28.00</span><button class="add-btn">Add</button></div></div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img"><img src="https://picsum.photos/seed/so2/500/625" alt="Jogger Set"/><span class="badge b-new">New</span></div>
+      <div class="prod-body"><h4>Abstract Print Matching Jogger Set</h4><div class="prod-sizes"><span class="sz">S</span><span class="sz">M</span><span class="sz">L</span><span class="sz">XL</span></div><div class="prod-footer"><span class="price">$20.00</span><button class="add-btn">Add</button></div></div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img"><img src="https://picsum.photos/seed/so3/500/625" alt="Longline Coat"/><span class="badge b-drop">New In</span></div>
+      <div class="prod-body"><h4>Women's Longline Belted Trench Coat</h4><div class="prod-sizes"><span class="sz">S</span><span class="sz">M</span><span class="sz">L</span></div><div class="prod-footer"><span class="price">$88.00</span><button class="add-btn">Add</button></div></div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img"><img src="https://picsum.photos/seed/so4/500/625" alt="Ribbed Set"/><span class="badge b-drop">New In</span></div>
+      <div class="prod-body"><h4>Women's Ribbed Co-Ord Set — Loungewear</h4><div class="prod-sizes"><span class="sz">XS</span><span class="sz">S</span><span class="sz">M</span><span class="sz">L</span></div><div class="prod-footer"><span class="price">$52.00</span><button class="add-btn">Add</button></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews">
+  <div class="rev-hdr">
+    <p class="eyebrow">What shoppers say</p>
+    <h2 class="sec-title">Real Women. Real Reviews.</h2>
+  </div>
+  <div class="rev-stats">
+    <div class="rstat"><div class="rn">4.9</div><div class="rl">Average Rating</div></div>
+    <div class="rstat"><div class="rn">2,000+</div><div class="rl">Happy Shoppers</div></div>
+    <div class="rstat"><div class="rn">98%</div><div class="rl">Would Recommend</div></div>
+  </div>
+  <div class="rev-grid">
+    <div class="rev-card"><div class="rev-stars">★★★★★</div><p class="rev-text">"I love how Angee curates these pieces. The leather dress fits like a dream and was half the price I expected to pay. This is my go-to boutique now."</p><div class="rev-author"><div class="rev-av">JM</div><div><div class="rev-name">Jasmine M.</div><div class="rev-tag">Verified Buyer</div></div></div></div>
+    <div class="rev-card"><div class="rev-stars">★★★★★</div><p class="rev-text">"The boho shoulder bag is everything. Quality is so much better than the price suggests. Fast shipping, great packaging, will definitely order again."</p><div class="rev-author"><div class="rev-av">TR</div><div><div class="rev-name">Tanya R.</div><div class="rev-tag">Verified Buyer</div></div></div></div>
+    <div class="rev-card"><div class="rev-stars">★★★★★</div><p class="rev-text">"Found Summabags through a friend and I've already placed three orders. Every piece I've gotten has been exactly as described. The Blue Ice dress is stunning."</p><div class="rev-author"><div class="rev-av">KD</div><div><div class="rev-name">Kezia D.</div><div class="rev-tag">Verified Buyer</div></div></div></div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-section">
+  <p class="eyebrow">Why Summabags</p>
+  <h2 class="sec-title">Boutique Without the Boutique Price</h2>
+  <div class="why-grid">
+    <div class="why-card"><div class="why-ico">💎</div><h3>Curated Quality</h3><p>Every piece is hand-selected by Angee — nothing gets added to the store that she wouldn't wear herself.</p></div>
+    <div class="why-card"><div class="why-ico">💰</div><h3>Honest Prices</h3><p>Boutique look, real-woman prices. The highest item in the store is under $95 — and most are under $45.</p></div>
+    <div class="why-card"><div class="why-ico">🚚</div><h3>Free Shipping</h3><p>Free shipping on all orders over $50. Fast, reliable delivery every time you shop.</p></div>
+    <div class="why-card"><div class="why-ico">💬</div><h3>Real Support</h3><p>Angee is here personally. Got a question about sizing or a style? You'll get a real human answer fast.</p></div>
+  </div>
+</section>
+
+<!-- SIZE GUIDE -->
+<section class="size-section">
+  <div class="size-inner">
+    <div class="size-text">
+      <p class="eyebrow">Find your perfect fit</p>
+      <h2 class="sec-title">Size Guide</h2>
+      <p>We want you to order with total confidence. Our size guide covers all clothing in the store. If you're between sizes we always recommend sizing up for a relaxed fit or down for a more fitted look.</p>
+      <p>Not sure? Reach out — Angee responds fast and will personally help you find the right size.</p>
+      <button class="btn-rose" style="margin-top:16px">Ask About Sizing</button>
+    </div>
+    <div class="size-wrap">
+      <table class="st">
+        <thead><tr><th>Size</th><th>Bust</th><th>Waist</th><th>Hips</th></tr></thead>
+        <tbody>
+          <tr><td>XS (0–2)</td><td>32–33"</td><td>24–25"</td><td>34–35"</td></tr>
+          <tr><td>S (4–6)</td><td>34–35"</td><td>26–27"</td><td>36–37"</td></tr>
+          <tr><td>M (8–10)</td><td>36–37"</td><td>28–29"</td><td>38–39"</td></tr>
+          <tr><td>L (12–14)</td><td>38–40"</td><td>30–32"</td><td>40–42"</td></tr>
+          <tr><td>XL (16)</td><td>41–43"</td><td>33–35"</td><td>43–45"</td></tr>
+          <tr><td>1X (18)</td><td>44–46"</td><td>36–38"</td><td>46–48"</td></tr>
+          <tr><td>2X (20)</td><td>47–49"</td><td>39–41"</td><td>49–51"</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="insta-section">
+  <div class="insta-hdr"><p class="eyebrow" style="text-align:center">Follow along</p></div>
+  <div class="insta-handle"><a href="#">@summabags_byangee</a><p>Tag us for a chance to be featured ✨</p></div>
+  <div class="insta-grid">
+    <div class="icell"><img src="https://picsum.photos/seed/sig1/300/300" alt="IG"/><div class="icell-over">📸</div></div>
+    <div class="icell"><img src="https://picsum.photos/seed/sig2/300/300" alt="IG"/><div class="icell-over">📸</div></div>
+    <div class="icell"><img src="https://picsum.photos/seed/sig3/300/300" alt="IG"/><div class="icell-over">📸</div></div>
+    <div class="icell"><img src="https://picsum.photos/seed/sig4/300/300" alt="IG"/><div class="icell-over">📸</div></div>
+    <div class="icell"><img src="https://picsum.photos/seed/sig5/300/300" alt="IG"/><div class="icell-over">📸</div></div>
+    <div class="icell"><img src="https://picsum.photos/seed/sig6/300/300" alt="IG"/><div class="icell-over">📸</div></div>
+  </div>
+</section>
+
+<!-- EMAIL -->
+<section class="email-section">
+  <div class="email-inner">
+    <p class="eyebrow">Join the Summabags family</p>
+    <h2 class="sec-title">Get 15% Off Your First Order</h2>
+    <p>Early access to new arrivals, exclusive discounts, and style inspiration — straight to your inbox.</p>
+    <div class="email-form">
+      <input class="email-input" type="email" placeholder="Your email address"/>
+      <button class="email-submit">Claim 15% Off</button>
+    </div>
+    <div class="email-perks">
+      <span class="eperk">No spam, ever</span>
+      <span class="eperk">·</span>
+      <span class="eperk">Unsubscribe anytime</span>
+      <span class="eperk">·</span>
+      <span class="eperk">Members-only drops</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="footer-logo">Summabags</span>
+      <p>Boutique fashion without the price tag. Curated by Angee for women who love style, colour, and expressing themselves.</p>
+      <div class="footer-social">
+        <div class="fsoc">ig</div>
+        <div class="fsoc">tt</div>
+        <div class="fsoc">fb</div>
+        <div class="fsoc">p</div>
+      </div>
+      <div class="pay-row">
+        <span class="pay">Visa</span><span class="pay">Mastercard</span><span class="pay">Shop Pay</span><span class="pay">Apple Pay</span><span class="pay">Google Pay</span><span class="pay">PayPal</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#">New Arrivals</a></li>
+        <li><a href="#">Dresses</a></li>
+        <li><a href="#">Tops & Blouses</a></li>
+        <li><a href="#">Sweaters & Cardigans</a></li>
+        <li><a href="#">Bottoms</a></li>
+        <li><a href="#">Bags & Handbags</a></li>
+        <li><a href="#">Accessories</a></li>
+        <li><a href="#">Sets & Co-Ords</a></li>
+        <li><a href="#">Boho & Festival</a></li>
+        <li><a href="#">Outerwear</a></li>
+        <li><a href="#">Under $15</a></li>
+        <li><a href="#">Sale</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <ul>
+        <li><a href="#">Size Guide</a></li>
+        <li><a href="#">Shipping Info</a></li>
+        <li><a href="#">Returns & Exchanges</a></li>
+        <li><a href="#">Track My Order</a></li>
+        <li><a href="#">Contact Angee</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>About</h4>
+      <ul>
+        <li><a href="#">Our Story</a></li>
+        <li><a href="#">Blog & Style Tips</a></li>
+        <li><a href="#">Reviews</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Refund Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Summabags. All rights reserved. Curated by Angee.</span>
+    <span>Boutique fashion without the price tag.</span>
+  </div>
+</footer>
+
+<div class="chat">💬</div>
+</body>
+</html>
